@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\LoanProduct;
 class LoanProductController extends Controller
 {
     public function index()
     {
-        $products = LoanProduct::all();
-        return view('products.index', compact('products'));
+        $loanProducts = LoanProduct::all();
+        return view('products.index', compact('loanProducts'));
     }
 
     public function create()
@@ -23,6 +23,7 @@ class LoanProductController extends Controller
             'name' => 'required',
             'code' => 'required|unique:loan_products',
             'minimum_amount' => 'required|numeric',
+            'maximum_amount' => 'required|numeric',
             'interest_rate' => 'required|numeric',
             'currency' => 'required',
         ]);
@@ -43,6 +44,7 @@ class LoanProductController extends Controller
             'name' => 'required',
             'code' => 'required|unique:loan_products,code,'.$loanProduct->id,
             'minimum_amount' => 'required|numeric',
+            'maximum_amount' => 'required|numeric',
             'interest_rate' => 'required|numeric',
             'currency' => 'required',
         ]);

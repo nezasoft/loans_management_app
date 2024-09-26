@@ -1,10 +1,18 @@
-@extends('layouts.app')
-
-@section('content')
-    <h1>Loan Applications</h1>
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Loans') }}
+        </h2>
+    </x-slot>
+      
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg" style="padding:20px;">
+    <x-button class="ms-4">
     <a href="{{ route('loans.create') }}" class="btn btn-primary">Apply for Loan</a>
-    <table class="table">
-        <thead>
+    </x-button><br/>
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
                 <th>Customer</th>
                 <th>Loan Product</th>
@@ -49,4 +57,7 @@
             @endforeach
         </tbody>
     </table>
-@endsection
+    </div>
+        </div>
+    </div>
+    </x-app-layout>

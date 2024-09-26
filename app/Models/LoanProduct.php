@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class LoanProduct extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'code', 'minimum_amount', 'interest_rate', 'currency'];
+    protected $fillable = ['name', 'code', 'minimum_amount', 'maximum_amount', 'interest_rate', 'currency'];
 }
 
 

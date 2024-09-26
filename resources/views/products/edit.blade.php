@@ -1,37 +1,42 @@
-@extends('layouts.app')
-
-@section('content')
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Products') }}
+        </h2>
+    </x-slot>
     <h1>Edit Loan Product</h1>
 
-    <form action="{{ route('loan_products.update', $loanProduct->id) }}" method="POST">
+    <form action="{{ route('products.update', $loanProduct->id) }}" method="POST" style="margin:20px;">
         @csrf
         @method('PUT')
 
-        <div class="form-group">
-            <label for="name">Product Name</label>
-            <input type="text" name="name" class="form-control" value="{{ $loanProduct->name }}" required>
+        <div class="mt-4">
+        <x-label for="name" value="{{ __('Name') }}" />
+        <x-input id="name" class="block mt-1" type="text" name="name" value="{{ $loanProduct->name }}" required autofocus  />
+        </div>
+        <div class="mt-4">
+        <x-label for="code" value="{{ __('Product Code') }}" />
+        <x-input id="code" class="block mt-1" type="text" name="code" value="{{ $loanProduct->code }}" required autofocus  />
+        </div>
+        <div class="mt-4">
+        <x-label for="minimum_amount" value="{{ __('Minimum Amount') }}" />
+        <x-input id="minimum_amount" class="block mt-1" type="text" name="minimum_amount" value="{{ $loanProduct->minimum_amount }}" required autofocus  />
+        </div>
+        <div class="mt-4">
+        <x-label for="maximum_amount" value="{{ __('Minimum Amount') }}" />
+        <x-input id="maximum_amount" class="block mt-1" type="text" name="maximum_amount" value="{{ $loanProduct->minimum_amount }}" required autofocus  />
+        </div>
+        <div class="mt-4">
+        <x-label for="interest_rate" value="{{ __('Interest Rate') }}" />
+        <x-input id="interest_rate" class="block mt-1" type="number" name="interest_rate" value="{{ $loanProduct->interest_rate }}"  required autofocus  />
+        </div>
+        <div class="mt-4">
+        <x-label for="currency" value="{{ __('Currency') }}" />
+        <x-input id="currency" class="block mt-1" text="text" name="currency" value="{{ $loanProduct->currency }}" required autofocus  />
         </div>
 
-        <div class="form-group">
-            <label for="code">Product Code</label>
-            <input type="text" name="code" class="form-control" value="{{ $loanProduct->code }}" required>
-        </div>
-
-        <div class="form-group">
-            <label for="minimum_amount">Minimum Amount</label>
-            <input type="number" name="minimum_amount" class="form-control" value="{{ $loanProduct->minimum_amount }}" required>
-        </div>
-
-        <div class="form-group">
-            <label for="interest_rate">Interest Rate (%)</label>
-            <input type="number" step="0.01" name="interest_rate" class="form-control" value="{{ $loanProduct->interest_rate }}" required>
-        </div>
-
-        <div class="form-group">
-            <label for="currency">Currency</label>
-            <input type="text" name="currency" class="form-control" value="{{ $loanProduct->currency }}" required>
-        </div>
-
-        <button type="submit" class="btn btn-primary">Update Product</button>
+        <x-button class="ms-4">
+                    {{ __('Update Product') }}
+        </x-button>
     </form>
-@endsection
+    </x-app-layout>

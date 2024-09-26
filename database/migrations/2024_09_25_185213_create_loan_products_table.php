@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('code');
             $table->decimal('minimum_amount', 10, 2);
+            $table->decimal('maximum_amount', 10, 2);
             $table->decimal('interest_rate', 5, 2);
             $table->string('currency');
             $table->timestamps();
