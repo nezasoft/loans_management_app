@@ -23,7 +23,7 @@
         </div>
 
         <div class="mt-4">
-            <x-label for="loan_product_id" value="{{ __('Customer') }}" />
+            <x-label for="loan_product_id" value="{{ __('Product') }}" />
             <select name="loan_product_id" id="loan_product_id" class="block mt-1">
                @foreach ($loanProducts as $product)
                     <option value="{{ $product->id }}">{{ $product->name }}  </option>

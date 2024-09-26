@@ -40,7 +40,7 @@
         <div class="mt-4">
         <x-label for="currency" value="{{ __('Currency') }}" />
         <x-input id="currency" class="block mt-1" text="text" name="currency" :value="old('currency')" required autofocus  />
-        </div>
+        </div><br/>
         <x-button class="ms-4">
                     {{ __('Save Product') }}
         </x-button>

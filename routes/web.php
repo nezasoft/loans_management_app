@@ -51,24 +51,26 @@ Route::middleware([
 });
 
 //Routes for customers
+Route::get('/customers', [CustomerController::class, 'index'])->name('customers.index');
 Route::get('/customers/index', [CustomerController::class, 'index'])->name('customers.index');
 Route::get('/customers/create', [CustomerController::class, 'create'])->name('customers.create');
 Route::post('/customers/store', [CustomerController::class, 'store'])->name('customers.store');
 Route::put('/customers/{customer}', [CustomerController::class, 'update'])->name('customers.update');
 Route::get('/customers/{customer}/edit', [CustomerController::class, 'edit'])->name('customers.edit');
 Route::delete('/customers/{customer}', [CustomerController::class, 'destroy'])->name('customers.destroy');
-Route::get('customers/{customer}/loans/report', [LoanController::class, 'report'])->name('loans.report');
+Route::get('/customers/{customer}/loans/report', [LoanController::class, 'report'])->name('loans.report');
 
 //Routes for products
-//Route::get('/products',[LoanProductController::class,'index'])->name('products.index');
+Route::get('/products',[LoanProductController::class,'index'])->name('products.index');
 Route::get('/products/index',[LoanProductController::class,'index'])->name('products.index');
 Route::get('/products/create',[LoanProductController::class,'create'])->name('products.create');
 Route::post('/products/store',[LoanProductController::class,'store'])->name('products.store');
-Route::get('/products/{product}/edit',[LoanProductController::class,'edit'])->name('products.edit');
-Route::put('/products/{product}',[LoanProductController::class,'update'])->name('products.update');
-Route::delete('/products/{product}',[LoanProductController::class,'destroy'])->name('products.destroy');
+Route::get('/products/{loanProduct}/edit',[LoanProductController::class,'edit'])->name('products.edit');
+Route::put('/products/{loanProduct}',[LoanProductController::class,'update'])->name('products.update');
+Route::delete('/products/{loanProduct}',[LoanProductController::class,'destroy'])->name('products.destroy');
 
 //Routes for loan management
+Route::get('/loans', [LoanController::class, 'index'])->name('loans.index');
 Route::get('/loans/index', [LoanController::class, 'index'])->name('loans.index');
 Route::get('/loans/create', [LoanController::class, 'create'])->name('loans.create');
 Route::post('/loans/store', [LoanController::class, 'store'])->name('loans.store');

@@ -58,16 +58,17 @@ class LoanController extends Controller
         ]);
 
         $loanProduct = LoanProduct::findOrFail($request->loan_product_id);
+       
 
         // Ensure amount is greater than product minimum amount
-        if ($request->amount < $loanProduct->minimum_amount) {
+        /*if ($request->amount < $loanProduct->minimum_amount) {
             return back()->withErrors(['amount' => 'Amount should be greater than or equal to the minimum product amount.']);
         }
 
         // Ensure amount is less than product maximum amount
         if ($request->amount > $loanProduct->maximum_amount) {
             return back()->withErrors(['amount' => 'Amount should be less than or equal to the maximum product amount.']);
-        }
+        }*/
 
         $interestRate = $loanProduct->interest_rate;
         $totalRepayable = $request->amount + ($request->amount * ($interestRate / 100));
@@ -93,7 +94,7 @@ class LoanController extends Controller
     }
 
     public function disburse(Loan $loan)
-{
+   {
     if ($loan->status != 'approved') {
         return back()->with('error', 'Loan cannot be disbursed.');
     }
@@ -107,7 +108,7 @@ class LoanController extends Controller
 }
 
     public function repay(Request $request, Loan $loan)
-{
+   {
     $request->validate([
         'amount' => 'required|numeric',
     ]);
@@ -139,8 +140,8 @@ public function report($customerId)
     // Retrieve all loans for the customer
     $loans = Loan::where('customer_id', $customerId)->get();
     // Calculate total disbursed, total repaid, and remaining balance
-    $totalDisbursed = $loans->sum('amount_disbursed');
-    $totalRepaid = $loans->sum('amount_repaid');
+    $totalDisbursed = $loans->sum('amount');
+    $totalRepaid = $loans->sum('total_repayable');
     $totalBalance = $loans->sum('balance');
 
     return view('loans.report', compact('customer', 'loans', 'totalDisbursed', 'totalRepaid', 'totalBalance'));

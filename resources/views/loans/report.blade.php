@@ -23,7 +23,7 @@
             @foreach ($loans as $loan)
                 <tr>
                     <td>{{ $loan->loanProduct->name }}</td>
-                    <td>{{ $loan->amount_disbursed }}</td>
+                    <td>{{ $loan->amount }}</td>
                     <td>{{ $loan->amount_repaid }}</td>
                     <td>{{ $loan->balance }}</td>
                     <td>{{ ucfirst($loan->status) }}</td>
@@ -34,7 +34,7 @@
 
     <h3>Total Summary:</h3>
     <p>Total Amount Disbursed: {{ $totalDisbursed }}</p>
-    <p>Total Amount Repaid: {{ $totalRepaid }}</p>
+    <p>Total Amount Repayable: {{ $totalRepaid }}</p>
     <p>Total Balance: {{ $totalBalance }}</p>
 
 

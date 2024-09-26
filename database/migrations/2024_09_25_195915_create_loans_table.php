@@ -21,7 +21,7 @@ return new class extends Migration
             $table->date('due_date')->nullable();
             $table->decimal('total_repayable', 10, 2)->nullable();
             $table->enum('status', ['pending', 'approved', 'disbursed', 'repaid'])->default('pending');
-            $table->decimal('amount_disbursed', 10, 2)->nullable();
+            $table->decimal('amount_disbursed', 10, 2)->default(0);
             $table->decimal('amount_repaid', 10, 2)->default(0);
             $table->decimal('balance', 10, 2)->default(0);
             $table->timestamps();

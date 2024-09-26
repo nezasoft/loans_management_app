@@ -4,8 +4,13 @@
             {{ __('Products') }}
         </h2>
     </x-slot>
-    <h1>Edit Loan Product</h1>
-
+    <div class="py-8">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8" >
+            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+            <x-button class="ms-4" style="margin:10px;">
+            <a href="{{ route('products.index') }}" class="ms-4">View Customers</a>
+            </x-button>
+            <h1 style="margin:20px;">Edit Product</h1>
     <form action="{{ route('products.update', $loanProduct->id) }}" method="POST" style="margin:20px;">
         @csrf
         @method('PUT')
@@ -33,10 +38,13 @@
         <div class="mt-4">
         <x-label for="currency" value="{{ __('Currency') }}" />
         <x-input id="currency" class="block mt-1" text="text" name="currency" value="{{ $loanProduct->currency }}" required autofocus  />
-        </div>
+        </div> <br/>
 
         <x-button class="ms-4">
                     {{ __('Update Product') }}
         </x-button>
     </form>
+    </div>
+    </div>
+    </div>
     </x-app-layout>
